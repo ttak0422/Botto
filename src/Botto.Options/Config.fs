@@ -1,5 +1,6 @@
 namespace Botto.Options
 
+open System
 open Elmish
 open Fable.Core
 open Fable.Core.JS
@@ -18,7 +19,7 @@ module Config =
     type Host =
         { Id: Index
           Host: string }
-        static member Default() = { Id = 0; Host = "" }
+        static member Default() = { Id = 0; Host = String.Empty }
 
     type AllowHosts = Hosts of Host list
 
@@ -82,7 +83,7 @@ module Config =
 
     let init () =
         { Config = getDefault ()
-          Form = ""
+          Form = String.Empty
           Editing = None
           Initialized = false },
         loadConfig ()
@@ -126,7 +127,10 @@ module Config =
                 let cfg' =
                     applyCurrentHosts (addHost model.Form hosts)
 
-                { model with Form = ""; Config = cfg' }, saveConfigCmd cfg'
+                { model with
+                      Form = String.Empty
+                      Config = cfg' },
+                saveConfigCmd cfg'
             | ApplyEdit editing ->
                 let cfg' =
                     applyCurrentHosts (updateHost editing hosts)
