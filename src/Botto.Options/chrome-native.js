@@ -15,10 +15,6 @@ export const chromeSet = (key, value) =>
         chrome.storage.sync.set(v, resolve);
     });
 
-    chrome.storage.sync.get(['key'], function(result) {
-        console.log('Value currently is ' + result.key);
-      });
-
 const sleep = msec => new Promise(resolve => {
     setTimeout(() => {
         resolve()

@@ -42,10 +42,10 @@ module LocalStorage =
     [<Emit("new Promise(resolve => setTimeout(resolve, $0))")>]
     let sleep (ms: int) : Promise<unit> = jsNative
 
-    [<ImportMember("./native.js")>]
+    [<ImportMember("./local-native.js")>]
     let localGet (key: Key) : Promise<JsonString> = jsNative
 
-    [<ImportMember("./native.js")>]
+    [<ImportMember("./local-native.js")>]
     let localSet (key: Key, value: JsonString) : Promise<unit> = jsNative
 
     type LocalStore private () =
@@ -71,10 +71,10 @@ module LocalStorage =
 
 module ChromeStorage =
 
-    [<ImportMember("./native.js")>]
+    [<ImportMember("./chrome-native.js")>]
     let private chromeGet (key: Key) : Promise<JsonString> = jsNative
 
-    [<ImportMember("./native.js")>]
+    [<ImportMember("./chrome-native.js")>]
     let private chromeSet (key: Key, value: JsonString) : Promise<unit> = jsNative
 
     type ChromeStore private () =
