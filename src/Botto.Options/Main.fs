@@ -95,8 +95,10 @@ let view (model: Model) (dispatch: Dispatch<Msg>) =
 
     div [] [
         navbar
-        Container.container [ Container.IsFluid ] [
-            content model.CurrentPage
+        Section.section [] [
+            Container.container [ Container.IsFluid ] [
+                content model.CurrentPage
+            ]
         ]
     ]
 
